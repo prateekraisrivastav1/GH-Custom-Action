@@ -1,13 +1,16 @@
 name: SonarQube Quality Gate Check
 
 inputs:
-  sonar-url:
+  SONARQUBE_URL:
     required: true
 
-  sonar-projectname:
+  SONARQUBE_PROJECTNAME:
     required: true
 
-  sonar-branch:
+  SONARQUBE_BRANCH:
+    required: true
+
+  SONAR_PASSWORD:
     required: true
 
 runs:
@@ -16,8 +19,9 @@ runs:
     - name: Check SonarQube Quality Gate
       shell: bash
       env:
-        SONAR_URL: ${{ inputs.sonar-url }}
-        SONAR_PROJECTNAME: ${{ inputs.sonar-projectname }}
-        SONAR_BRANCH: ${{ inputs.sonar-branch }}
+        SONAR_URL: ${{ inputs.SONARQUBE_URL }}
+        SONAR_PROJECTNAME: ${{ inputs.SONARQUBE_PROJECTNAME }}
+        SONAR_BRANCH: ${{ inputs.SONARQUBE_BRANCH }}
+        SONAR_PASSWORD: ${{ inputs.SONAR_PASSWORD }}
       run: |
-        bash "${{ github.action_path }}/sonar-qg.sh" "$SONAR_PROJECTNAME" "$SONAR_TOKEN"
+        bash "${{ github.action_path }}/sonar-qg.sh" "$SONAR_PROJECTNAME" "$SONAR_PASSWORD"

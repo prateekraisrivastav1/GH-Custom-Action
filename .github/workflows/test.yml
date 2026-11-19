@@ -13,3 +13,4 @@ jobs:
           SONARQUBE_URL: ${{ secrets.SONARQUBE_URL }}
           SONARQUBE_PROJECTNAME: ${{ secrets.SONARQUBE_PROJECTNAME }}
           SONARQUBE_BRANCH: ${{ secrets.SONARQUBE_BRANCH }}
+          SONAR_PASSWORD: ${{ secrets.SONAR_PASSWORD }}
