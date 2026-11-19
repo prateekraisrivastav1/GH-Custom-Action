@@ -1,0 +1,15 @@
+name: Sonarqube Quality Gate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sonarqube-quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: custom-sonarqube-quality-gate
+        uses: ./.github/actions/custom-sonarqube-quality-gate
+        with:
+          SONARQUBE_URL: ${{ secrets.SONARQUBE_URL }}
+          SONARQUBE_PROJECTNAME: ${{ secrets.SONARQUBE_PROJECTNAME }}
+          SONARQUBE_BRANCH: ${{ secrets.SONARQUBE_BRANCH }}
